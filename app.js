@@ -41,6 +41,6 @@ app.get("/health", (_req, res) => res.json({ status: "ok" }));
 // error handler (last)
 // app.use(errorHandler);
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, '0.0.0.0',() => {
     console.log(`API running on http://localhost:${process.env.PORT}`);
 });
