@@ -16,7 +16,7 @@ const app = express();
 app.use("/upload", express.static(path.join(process.cwd(), "public", "upload")));
 
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true })); // NOT '*'
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true })); // NOT '*'
 app.use(cookieParser(`${process.env.JWT_SECRET}`)); // Use your JWT secret for cookie signing
 app.set("trust proxy", 1); // if behind proxy
 

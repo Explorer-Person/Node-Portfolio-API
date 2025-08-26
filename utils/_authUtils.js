@@ -6,10 +6,11 @@ const ACCESS_TTL_S = 15 * 60;                    // 15 minutes
 const REFRESH_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 
 const PROD = process.env.NODE_ENV === "production";
+const siteMode = PROD ? "none" : "lax"; // cross-site in prod if using different domain for client
 const BASE_COOKIE = {
     httpOnly: true,
     secure: PROD,          // true in prod (HTTPS)
-    sameSite: "lax",       // if truly cross-site, use: "none" + secure:true + HTTPS
+    sameSite: siteMode,       // if truly cross-site, use: "none" + secure:true + HTTPS
     path: "/",
 };
 
